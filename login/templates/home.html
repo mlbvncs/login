@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    {% if current_user.is_authenticated %}
+      <p>Usuário Logado: {{current_user.email}}<br>Função: {{current_user.role}}<br><a href="/logout">Logout</a></p>
+      <a href="/professores">Ver todos os professores</a> (Accesso: Professor)<br><br>
+      <a href="/funcionários">Ver todos os funcionários</a> (Accesso: Professor, Funcionário)<br><br>
+      <a href="/estudantes">Ver todos os estudantes</a> (Accesso: Professor, Funcionário, Estudante)<br><br>
+      <a href="/detalhes">Ver meus detalhes</a> (Accesso: Professor, Funcionário, Estudante)
+    {% else %}
+      <a href="/registro">Criar Conta</a> | <a href="/login">Login</a>
+    {% endif %}
+  </body>
+</html>

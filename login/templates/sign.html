@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Conta</title>
+  </head>
+  <body>
+    <ul>
+      <li><a href="/">Página Principal</a></li>
+    </ul>
+    <h1>Criar Conta</h1>
+    {% if current_user.is_authenticated %}
+      Você já está logado.
+    {% else %}
+      {% set mensagem = get_flashed_messages() %}
+      {% if mensagem %}
+        <h4>
+        {% for msg in mensagem%}
+          {{ msg }}
+        {% endfor %}
+        </h4>
+      {% endif %}
+      <form action="" method="POST" autocomplete="off">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" autocomplete="off" required>
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="senha" required>
+        <br><br>
+        <input type="radio" name="função" id="option2" value="Professor">Professor</input>
+        <input type="radio" name="função" id="option3" value="Funcionário">Funcionário</input>
+        <input type="radio" name="função" id="option3" value="Estudante">Estudante</input><br>
+        <br>
+        <input type="submit" value="Cadastrar">
+      </form>
+      <p>Já tem uma conta? <a href="/login">Login</a></p>
+    {% endif %}
+  </body>
+</html>

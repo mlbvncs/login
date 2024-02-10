@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <ul>
+      <li><a href="/">Página Principal</a></li>
+    </ul>
+    <h1>Faça Login</h1>
+    {% set mensagem = get_flashed_messages() %}
+      {% if mensagem %}
+        <h4>
+        {% for msg in mensagem%}
+          {{ msg }}
+        {% endfor %}
+        </h4>
+      {% endif %}
+    <form action="" method="POST" autocomplete="off">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" autocomplete="off" required>
+      <label for="password">Senha:</label>
+      <input type="password" id="password" name="senha" required>
+      <input type="submit" value="Login">
+    </form>
+    <p>Não tem uma conta? <a href="/registro">Criar Conta</a></p>
+  </body>
+</html>

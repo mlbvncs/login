@@ -1,0 +1,14 @@
+{% extends 'teachers.html' %}
+
+{% block body %}
+  {% if current_user.role == "Professor" or current_user.role == "Funcionário" or current_user.role == "Estudante" %}
+    <ol>
+      {% for student in students %}
+        <li>{{student}}</li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <h3>Conteúdo indisponível para sua função</h3>
+    <a href="/">Página Principal</a>
+  {% endif %}
+{% endblock %}
